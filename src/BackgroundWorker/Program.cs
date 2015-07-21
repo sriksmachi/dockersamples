@@ -12,7 +12,8 @@ namespace BackgroundWorker
     {
         public void Main(string[] args)
         {
-            var storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=sriksstore;AccountKey=KIQ1QGEUveBYibPFMVPMjfEPoQQCE3HCr71yZp/A1YvSuHrMFMK0ZlvqvSrmAym4OA3DwT05suxBMHH3/zDNWQ==");
+            //Sample storage connection string format: DefaultEndpointsProtocol=https;AccountName=azurestore;AccountKey=KIQ1QGEUvKKYibPFMVPMjfEPoQQCE3HCr71yZp/A1YvSuHrMFMK0ZlvqvSrmAym4OA3DwT05suxBMHH3/zDNWQ==
+            var storageAccount = CloudStorageAccount.Parse("[Replace-with-StorageConnectionString");
             var queueClient = storageAccount.CreateCloudQueueClient();
             var queueReference = queueClient.GetQueueReference("messages");
             while (true)

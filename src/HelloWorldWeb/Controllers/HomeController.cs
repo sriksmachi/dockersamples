@@ -34,13 +34,18 @@ namespace HelloWorldWeb.Controllers
         /// <param name="userContextJson"></param>
         private async void AddToQueue(string userContextJson)
         {
-            var storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=sriksstore;AccountKey=KIQ1QGEUveBYibPFMVPMjfEPoQQCE3HCr71yZp/A1YvSuHrMFMK0ZlvqvSrmAym4OA3DwT05suxBMHH3/zDNWQ==");
+            //Sample storage connection string format: DefaultEndpointsProtocol=https;AccountName=azurestore;AccountKey=KIQ1QGEUvKKYibPFMVPMjfEPoQQCE3HCr71yZp/A1YvSuHrMFMK0ZlvqvSrmAym4OA3DwT05suxBMHH3/zDNWQ==
+            var storageAccount = CloudStorageAccount.Parse("[Replace-with-StorageConnectionString");
             var queueClient = storageAccount.CreateCloudQueueClient();
             var queueReference = queueClient.GetQueueReference("messages");
             await queueReference.CreateIfNotExistsAsync();
             await queueReference.AddMessageAsync(new Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage(userContextJson));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Error()
         {
             return View("~/Views/Shared/Error.cshtml");
